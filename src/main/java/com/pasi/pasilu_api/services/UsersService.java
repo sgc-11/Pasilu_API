@@ -59,21 +59,18 @@ public class UsersService {
     }
 
     /* -------  UPDATE --------*/
-public UserResponse update(UUID id, @Valid UserUpdateRequest dto) {
+    @Transactional
+    public UserResponse update(UUID id, @Valid UserUpdateRequest dto) {
     User user = userRepo.findById(id)
             .orElseThrow(() -> new UserNotFoundException(id));
 
-    user.setName(dto.name());
-    user.setLastname(dto.lastname());
-    user.setCellphone(dto.cellphone());
-    user.setLocation(dto.location());
-
-    if(dto.password() != null && !dto.password().isBlank()) {
-        user.setPasswordHash(passwordEncoder.encode(dto.password()));
-    }
+    if(dto.name() != null) user.setName(dto.name());
+    if(dto.lastname() != null) user.setLastname(dto.lastname());
+    if(dto.cellphone() != null) user.setCellphone(dto.cellphone());
+    if(dto.location() != null) user.setLocation(dto.location());
+    if(dto.password() != null && !dto.password().isBlank()) user.setPasswordHash(passwordEncoder.encode(dto.password()));
 
     //No permitido cambiar el mail
-
     return mapToResponse(user);
 }
 
