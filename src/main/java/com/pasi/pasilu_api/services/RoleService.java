@@ -1,8 +1,8 @@
 package com.pasi.pasilu_api.services;
 
-import com.pasi.pasilu_api.Entities.Role;
-import com.pasi.pasilu_api.Exceptions.RoleNameAlreadyUsedException;
-import com.pasi.pasilu_api.Exceptions.RoleNotFoundException;
+import com.pasi.pasilu_api.entities.Role;
+import com.pasi.pasilu_api.exceptions.RoleNameAlreadyUsedException;
+import com.pasi.pasilu_api.exceptions.RoleNotFoundException;
 import com.pasi.pasilu_api.dtos.roles.*;
 import com.pasi.pasilu_api.repositories.RoleRepository;
 import jakarta.transaction.Transactional;

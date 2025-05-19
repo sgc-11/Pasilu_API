@@ -1,8 +1,8 @@
 package com.pasi.pasilu_api.services;
 
-import com.pasi.pasilu_api.Entities.User;
-import com.pasi.pasilu_api.Exceptions.EmailAlreadyUsedException;
-import com.pasi.pasilu_api.Exceptions.UserNotFoundException;
+import com.pasi.pasilu_api.entities.User;
+import com.pasi.pasilu_api.exceptions.EmailAlreadyUsedException;
+import com.pasi.pasilu_api.exceptions.UserNotFoundException;
 import com.pasi.pasilu_api.dtos.users.UserRegistrationRequest;
 import com.pasi.pasilu_api.dtos.users.UserResponse;
 import com.pasi.pasilu_api.dtos.users.UserUpdateRequest;

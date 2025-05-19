@@ -1,6 +1,6 @@
 package com.pasi.pasilu_api.repositories;
 
-import com.pasi.pasilu_api.Entities.Role;
+import com.pasi.pasilu_api.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

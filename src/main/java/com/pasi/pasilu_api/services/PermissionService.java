@@ -1,8 +1,8 @@
 package com.pasi.pasilu_api.services;
 
-import com.pasi.pasilu_api.Entities.Permission;
-import com.pasi.pasilu_api.Exceptions.PermissionNameAlreadyUsedException;
-import com.pasi.pasilu_api.Exceptions.PermissionNotFoundException;
+import com.pasi.pasilu_api.entities.Permission;
+import com.pasi.pasilu_api.exceptions.PermissionNameAlreadyUsedException;
+import com.pasi.pasilu_api.exceptions.PermissionNotFoundException;
 import com.pasi.pasilu_api.dtos.permissions.*;
 import com.pasi.pasilu_api.repositories.PermissionRepository;
 import jakarta.transaction.Transactional;

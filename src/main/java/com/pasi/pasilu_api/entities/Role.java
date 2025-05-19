@@ -1,4 +1,4 @@
-package com.pasi.pasilu_api.Entities;
+package com.pasi.pasilu_api.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

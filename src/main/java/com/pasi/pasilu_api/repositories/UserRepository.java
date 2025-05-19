@@ -1,6 +1,6 @@
 package com.pasi.pasilu_api.repositories;
 
-import com.pasi.pasilu_api.Entities.User;
+import com.pasi.pasilu_api.entities.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

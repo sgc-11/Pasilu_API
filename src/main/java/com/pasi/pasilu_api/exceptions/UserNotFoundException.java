@@ -1,4 +1,4 @@
-package com.pasi.pasilu_api.Exceptions;
+package com.pasi.pasilu_api.exceptions;
 
 import java.util.UUID;
 

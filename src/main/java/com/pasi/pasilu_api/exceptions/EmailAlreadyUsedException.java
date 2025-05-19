@@ -1,4 +1,4 @@
-package com.pasi.pasilu_api.Exceptions;
+package com.pasi.pasilu_api.exceptions;
 
 public class EmailAlreadyUsedException extends RuntimeException {
   public EmailAlreadyUsedException(String message) {
