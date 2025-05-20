@@ -6,10 +6,12 @@ import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.*;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -99,5 +101,12 @@ public class GlobalExceptionHandler {
     }
     private ResponseEntity<ApiError> build(HttpStatus status, String code, String message) {
         return ResponseEntity.status(status).body(new ApiError(status, code, message));
+    }
+
+    //Bad credentials
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public Map<String,String> handleBadCredentials(BadCredentialsException ex) {
+        return Map.of("error", ex.getMessage());
     }
 }
