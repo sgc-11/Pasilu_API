@@ -1,0 +1,7 @@
+jwt:
+  secret: ${JWT_SECRET:KUyOaahUzBy8gErBfO4JPTY9FZtbDcl/4DIs4vfAwls=}
+  expiration: 6000s
+spring:
+    security:
+      csrf:
+        enabled: false # si usaras solo REST stateless

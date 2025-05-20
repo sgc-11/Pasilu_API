@@ -6,4 +6,5 @@ public record LoginResponse(
         UUID id,
         String name,
         String lastname,
-        String mail) {}
+        String mail,
+        String token) {}

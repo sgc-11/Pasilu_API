@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")   // cambia según tu host
+@CrossOrigin(origins = "http://localhost:3000")
 public class AuthController {
 
     private final AuthService authService;
 
     @PostMapping("/login")
     public LoginResponse login(@RequestBody @Valid LoginRequest req) {
-        return authService.login(req);   // 200 OK con user data
+        return authService.login(req);   // 200 OK con token incluido
     }
 }
+
 
