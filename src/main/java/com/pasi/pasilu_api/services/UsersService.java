@@ -1,5 +1,6 @@
 package com.pasi.pasilu_api.services;
 
+import com.pasi.pasilu_api.dtos.users.UserRegistrationResponse;
 import com.pasi.pasilu_api.entities.User;
 import com.pasi.pasilu_api.exceptions.EmailAlreadyUsedException;
 import com.pasi.pasilu_api.exceptions.UserNotFoundException;
@@ -7,6 +8,7 @@ import com.pasi.pasilu_api.dtos.users.UserRegistrationRequest;
 import com.pasi.pasilu_api.dtos.users.UserResponse;
 import com.pasi.pasilu_api.dtos.users.UserUpdateRequest;
 import com.pasi.pasilu_api.repositories.UserRepository;
+import com.pasi.pasilu_api.services.authentication.JwtService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,6 +23,7 @@ import java.util.UUID;
 public class UsersService {
     private final UserRepository userRepo;
     private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
     /* -------------QUERY -------------*/
     @Transactional(readOnly = true)
@@ -40,7 +43,7 @@ public class UsersService {
 
     /* -------  POST --------*/
     @Transactional
-    public UserResponse register(UserRegistrationRequest dto) {
+    public UserRegistrationResponse register(UserRegistrationRequest dto) {
         if (userRepo.existsByMail(dto.mail()))
             throw new EmailAlreadyUsedException(dto.mail());
 
@@ -53,9 +56,13 @@ public class UsersService {
         user.setPasswordHash(passwordEncoder.encode(dto.password()));
         user.setCreatedAt(java.time.LocalDateTime.now());
 
-        User saved = userRepo.save(user);
+        userRepo.save(user);
 
-        return mapToResponse(saved);
+        String token = jwtService.generateToken(user.getId());
+
+        return new UserRegistrationResponse(
+                user.getId(), user.getName(), user.getLastname(), user.getMail(), token
+        );
     }
 
     /* -------  UPDATE --------*/

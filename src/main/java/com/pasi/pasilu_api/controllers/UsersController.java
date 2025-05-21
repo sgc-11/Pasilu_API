@@ -1,6 +1,7 @@
 package com.pasi.pasilu_api.controllers;
 
 import com.pasi.pasilu_api.dtos.users.UserRegistrationRequest;
+import com.pasi.pasilu_api.dtos.users.UserRegistrationResponse;
 import com.pasi.pasilu_api.dtos.users.UserResponse;
 import com.pasi.pasilu_api.dtos.users.UserUpdateRequest;
 import com.pasi.pasilu_api.services.UsersService;
@@ -22,7 +23,7 @@ public class UsersController {
     /* ---------- Crear ---------- */
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserResponse register(@Valid @RequestBody UserRegistrationRequest body) {
+    public UserRegistrationResponse register(@Valid @RequestBody UserRegistrationRequest body) {
         return userService.register(body);
     }
 
