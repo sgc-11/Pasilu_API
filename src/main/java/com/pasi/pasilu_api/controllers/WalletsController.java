@@ -20,7 +20,7 @@ public class WalletsController {
     /* ---- LIST ---- */
     @GetMapping
     public List<WalletResponse> list() {
-        return walletService.findAll();
+        return walletService.findAllForCurrentUser();
     }
 
     /* ---- GET ---- */
